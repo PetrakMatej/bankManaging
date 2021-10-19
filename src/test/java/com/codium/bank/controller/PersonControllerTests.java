@@ -55,23 +55,23 @@ public class PersonControllerTests extends ControllerTests {
         mockMvc.perform(get("/people/list")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value("Fero"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value(FIRST_NAME))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].cards").isArray());
     }
 
     @Test
     public void should_SearchPerson_When_ValidRequest() throws Exception {
-        given(this.mockPersonRepository.findByLastNameAndFirstName("Tester", "Fero")).willReturn(List.of(getPerson()));
+        given(this.mockPersonRepository.findByLastNameAndFirstName(LAST_NAME, FIRST_NAME)).willReturn(List.of(getPerson()));
         mockMvc.perform(get("/people/search?firstname=Fero&lastname=Tester")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value("Fero"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].lastName").value("Tester"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value(FIRST_NAME))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].lastName").value(LAST_NAME));
     }
 
     @Test
     public void should_SearchPerson_When_InvalidRequest() throws Exception {
-        given(this.mockPersonRepository.findByLastNameAndFirstName("Tester", "Fero")).willReturn(List.of(getPerson()));
+        given(this.mockPersonRepository.findByLastNameAndFirstName(LAST_NAME, FIRST_NAME)).willReturn(List.of(getPerson()));
         mockMvc.perform(get("/people/search?firstname=Fero&lastname=Tester77")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
@@ -83,7 +83,7 @@ public class PersonControllerTests extends ControllerTests {
         mockMvc.perform(get("/people/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isFound())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value("Fero"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value(FIRST_NAME));
     }
 
     @Test
