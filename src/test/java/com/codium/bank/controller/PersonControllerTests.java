@@ -20,8 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PersonControllerTests extends ControllerTests {
 
     protected static final String NEW_PERSON = "{\n" +
-            "    \"firstName\": \"Fero\",\n" +
-            "    \"lastName\": \"Tester\",\n" +
+            "    \"person\": {\n" +
+            "           \"firstName\": \"Fero\",\n" +
+            "           \"lastName\": \"Tester\"\n" +
+            "      }, \n" +
             "    \"cards\": [\n" +
             "        {\n" +
             "            \"cardNumber\": \"1111-1111-1111-1111\",\n" +
@@ -55,7 +57,7 @@ public class PersonControllerTests extends ControllerTests {
         mockMvc.perform(get("/people/list")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value(FIRST_NAME))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].person.firstName").value(FIRST_NAME))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].cards").isArray());
     }
 
@@ -65,8 +67,8 @@ public class PersonControllerTests extends ControllerTests {
         mockMvc.perform(get("/people/search?firstname=Fero&lastname=Tester")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value(FIRST_NAME))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].lastName").value(LAST_NAME));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].person.firstName").value(FIRST_NAME))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].person.lastName").value(LAST_NAME));
     }
 
     @Test
@@ -93,8 +95,7 @@ public class PersonControllerTests extends ControllerTests {
                         .content(NEW_PERSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
+                .andExpect(status().isCreated());
     }
 
 

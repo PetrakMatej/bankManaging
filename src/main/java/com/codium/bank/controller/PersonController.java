@@ -38,7 +38,7 @@ public class PersonController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public PersonWithCards createPerson(@Valid @RequestBody PersonWithCardsImpl personWithCards) {
-        Person person = new Person(personWithCards.getFirstName(), personWithCards.getLastName());
+        Person person = new Person(personWithCards.getPerson().getFirstName(), personWithCards.getPerson().getLastName());
         Person savedPerson = personRepository.save(person);
         logger.info("Created person with ID {}.", person.getId());
         personWithCards.getCards().forEach(card -> card.setPerson(savedPerson));
@@ -46,7 +46,7 @@ public class PersonController {
         return new PersonWithCardsImpl(person, savedCards);
     }
 
-    @CachePut(value = "people", key = "#personId")
+    @CachePut(value = "person", key = "#personId")
     @PutMapping("/update/{personId}")
     @ResponseStatus(HttpStatus.OK)
     public Person updatePerson(@PathVariable long personId, @Valid @RequestBody Person personRequest) {
@@ -66,7 +66,7 @@ public class PersonController {
         }).orElseThrow(() -> new EntityNotFoundException(String.format("PersonId %s not found", personId)));
     }
 
-    @Cacheable(value = "people", key = "#personId")
+    @Cacheable(value = "person", key = "#personId")
     @GetMapping("/{personId}")
     @ResponseStatus(HttpStatus.FOUND)
     public PersonWithCards getById(@PathVariable long personId) {

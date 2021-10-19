@@ -13,9 +13,7 @@ public class BankExceptionHandler {
     public ResponseEntity<Object> handle(Exception ex, HttpServletRequest request, HttpServletResponse response) {
         if (ex instanceof NullPointerException) {
             return ResponseEntity.badRequest().build();
-        }
-        else if(ex instanceof EntityNotFoundException)
-        {
+        } else if (ex instanceof EntityNotFoundException) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.internalServerError().build();

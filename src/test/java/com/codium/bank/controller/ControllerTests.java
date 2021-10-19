@@ -38,16 +38,14 @@ public class ControllerTests {
     @MockBean
     protected BankCardRepository mockBankCardRepository;
 
-    protected Person getPerson()
-    {
+    protected Person getPerson() {
         Person person = new Person(FIRST_NAME, LAST_NAME);
         person.setId(1);
         return person;
     }
 
-    protected BankCard getBankCard()
-    {
-        return new BankCard(1L,CARD_NUMBER, new Date(), CVV_CODE, getPerson());
+    protected BankCard getBankCard() {
+        return new BankCard(1L, CARD_NUMBER, new Date(), CVV_CODE, getPerson());
     }
 
 }

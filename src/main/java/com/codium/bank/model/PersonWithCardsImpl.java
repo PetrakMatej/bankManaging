@@ -6,24 +6,13 @@ import java.util.List;
 
 public class PersonWithCardsImpl implements PersonWithCards {
 
-    private long id;
-    private String firstName;
-    private String lastName;
+    private Person person;
     private List<BankCard> cards;
 
-    @Override
-    public long getId() {
-        return id;
-    }
 
     @Override
-    public String getFirstName() {
-        return firstName;
-    }
-
-    @Override
-    public String getLastName() {
-        return lastName;
+    public Person getPerson() {
+        return person;
     }
 
     @Override
@@ -31,17 +20,10 @@ public class PersonWithCardsImpl implements PersonWithCards {
         return cards;
     }
 
+    @JsonCreator
     public PersonWithCardsImpl(Person person, List<BankCard> cards) {
-        this.id = person.getId();
-        this.firstName = person.getFirstName();
-        this.lastName = person.getLastName();
+        this.person = person;
         this.cards = cards;
     }
 
-    @JsonCreator
-    public PersonWithCardsImpl(String firstName, String lastName, List<BankCard> cards) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cards = cards;
-    }
 }

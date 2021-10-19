@@ -82,7 +82,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\": \"Fero\",\r\n    \"lastName\": \"Tester\",\r\n    \"cards\": [\r\n        {\r\n            \"cardNumber\": \"1111-1111-1111-1111\",\r\n            \"expirationDate\": \"2022-02-01\",\r\n            \"cvvCode\": \"123\"\r\n        },\r\n        {\r\n            \"cardNumber\": \"2222-22222-22222-2222\",\r\n            \"expirationDate\": \"2023-06-01\",\r\n            \"cvvCode\": \"321\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"person\": {\r\n            \"firstName\": \"Fero\",\r\n            \"lastName\": \"Tester\"\r\n        },\r\n    \"cards\": [\r\n        {\r\n            \"cardNumber\": \"1111-1111-1111-1111\",\r\n            \"expirationDate\": \"2022-02-01\",\r\n            \"cvvCode\": \"123\"\r\n        },\r\n        {\r\n            \"cardNumber\": \"2222-22222-22222-2222\",\r\n            \"expirationDate\": \"2023-06-01\",\r\n            \"cvvCode\": \"321\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardNumber\": \"333333333\",\r\n    \"expirationDate\": \"3.3.2005\",\r\n    \"cvvCode\": \"152\"\r\n}",
+					"raw": "{\r\n    \"cardNumber\": \"333333333\",\r\n    \"expirationDate\": \"2025-05-05\",\r\n    \"cvvCode\": \"152\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
