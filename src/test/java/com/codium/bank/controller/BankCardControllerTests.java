@@ -25,6 +25,7 @@ public class BankCardControllerTests extends ControllerTests {
             "    \"expirationDate\": \"2025-11-03\",\n" +
             "    \"cvvCode\": \"152\"\n" +
             "}";
+
     @Autowired
     private BankCardController controller;
 
@@ -42,7 +43,7 @@ public class BankCardControllerTests extends ControllerTests {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].cardId").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].cardNumber").value("2222-2222-2222"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].cardNumber").value(CARD_NUMBER));
     }
 
     //@Test
@@ -52,7 +53,7 @@ public class BankCardControllerTests extends ControllerTests {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isFound())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cardId").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.cardNumber").value("2222-2222-2222"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.cardNumber").value(CARD_NUMBER));
     }
 
     @Test

@@ -19,13 +19,17 @@ import java.util.Date;
 @ActiveProfiles("test")
 public class ControllerTests {
 
+    public static final String CARD_NUMBER = "2222-2222-2222";
+    public static final String FIRST_NAME = "Fero";
+    public static final String LAST_NAME = "Tester";
+    public static final String CVV_CODE = "123";
+
     @Autowired
     protected MockMvc mockMvc;
 
 
     @Autowired
     private BankCardController bankCardController;
-
 
 
     @MockBean
@@ -36,15 +40,14 @@ public class ControllerTests {
 
     protected Person getPerson()
     {
-        Person person = new Person("Fero", "Tester");
+        Person person = new Person(FIRST_NAME, LAST_NAME);
         person.setId(1);
         return person;
     }
 
     protected BankCard getBankCard()
     {
-        return new BankCard(1l,"2222-2222-2222", new Date(44444), "123", getPerson());
-
+        return new BankCard(1L,CARD_NUMBER, new Date(), CVV_CODE, getPerson());
     }
 
 }
