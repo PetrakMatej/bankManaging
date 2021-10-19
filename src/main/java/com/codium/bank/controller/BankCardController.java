@@ -2,14 +2,11 @@ package com.codium.bank.controller;
 
 import com.codium.bank.exception.EntityNotFoundException;
 import com.codium.bank.model.BankCard;
-import com.codium.bank.model.PersonWithCards;
-import com.codium.bank.model.PersonWithCardsImpl;
 import com.codium.bank.repository.BankCardRepository;
 import com.codium.bank.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
